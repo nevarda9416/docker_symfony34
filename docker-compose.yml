@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: ./docker/php
+    volumes:
+      - ./symfony-app:/var/www/html # Mount your Symfony project
+    ports:
+      - "9000:9000" # Expose PHP-FPM port
+    depends_on:
+      - mysql
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./symfony-app/web:/var/www/html/web:ro # Mount Symfony's web directory
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro # Nginx config
+    ports:
+      - "80:80"
+    depends_on:
+      - php
+
+  mysql:
+    image: mysql:5.7 # Use a compatible MySQL version for Symfony 3.4
+    environment:
+      MYSQL_ROOT_PASSWORD: your_root_password
+      MYSQL_DATABASE: symfony_db
+      MYSQL_USER: symfony_user
+      MYSQL_PASSWORD: symfony_password
+    volumes:
+      - mysql_data:/var/lib/mysql # Persistent data storage
+
+volumes:
+  mysql_data:

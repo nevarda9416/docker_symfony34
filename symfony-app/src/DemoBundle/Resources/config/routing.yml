@@ -1,0 +1,14 @@
+demo_homepage:
+    path:     /
+    defaults: { _controller: DemoBundle:Default:index }
+    methods:  [GET]
+
+demo_form:
+    path:     /form
+    defaults: { _controller: DemoBundle:Default:form }
+    methods:  [GET, POST]
+
+demo_api:
+    path:     /api
+    defaults: { _controller: DemoBundle:Default:api }
+    methods:  [GET]    

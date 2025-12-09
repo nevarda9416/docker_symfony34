@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demo Bundle{% endblock %}
+
+{% block body %}
+    <h1>Demo Bundle Works!</h1>
+    <p>{{ message }}</p>
+    <h3>Features:</h3>
+    <ul>
+        {% for feature in features %}
+            <li>{{ feature }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

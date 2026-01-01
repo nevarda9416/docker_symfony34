@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Contact us</h1>
+    {% for flash in app.session.flashbag.get('success') %}
+        <div class="alert alert-success">{{ flash }}</div>
+    {% endfor %}
+    {% for flash in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger">{{ flash }}</div>
+    {% endfor %}
+    {{ form_start(form) }}
+    {{ form_end(form) }}
+{% endblock %}

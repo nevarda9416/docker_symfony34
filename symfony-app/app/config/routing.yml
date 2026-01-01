@@ -5,3 +5,11 @@ app:
 demo:
     resource: '@DemoBundle/Resources/config/routing.yml'
     prefix: /demo/
+
+contact_new:
+    path: /contact
+    defaults: { _controller: 'ContactBundle:Contact:new' }
+
+contact_success:
+    path: /contact/success
+    defaults: { _controller: 'ContactBundle:Contact:success' }
